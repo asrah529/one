@@ -728,7 +728,7 @@ select:hover { border-color: var(--border-strong); }
   <div class="container header-inner">
     <a class="brand" href="#main">
       <span class="brand-mark" aria-hidden="true"><i class="fa-solid fa-cube"></i></span>
-      Nexus
+      Nexusshops
     </a>
 
     <div class="search-wrap">
