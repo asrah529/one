@@ -543,7 +543,7 @@
   </footer>
 
   <!-- Slide-out Cart Drawer -->
-  <div class="drawer-backdrop" id="cartDrawer" onclick="if(event.target===this) toggleCart(false)">
+  <div class="drawer-backdrop" id="cartDrawer">
     <aside class="drawer">
       <div>
         <div class="drawer-head">
@@ -648,6 +648,13 @@
       updateCartUI();
       toggleCart(false);
     }
+
+    const cartDrawer = document.getElementById("cartDrawer");
+    cartDrawer.addEventListener("click", (e) => {
+      if (e.target === cartDrawer) {
+        toggleCart(false);
+      }
+    });
 
     document.getElementById("filterBar").addEventListener("click", (e) => {
       if (!e.target.matches(".filter-pill")) return;
