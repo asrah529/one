@@ -479,7 +479,7 @@
         <li><a href="#catalog">Shop All</a></li>
         <li><a href="#ritual">Our Philosophy</a></li>
       </ul>
-      <button class="cart-btn" onclick="toggleCart(true)">
+      <button type="button" class="cart-btn" onclick="toggleCart(true)">
         Bag (<span id="cartCount">0</span>)
       </button>
     </div>
@@ -514,10 +514,10 @@
         <h2>Shop Beauty & Skincare</h2>
       </div>
       <div class="filters" id="filterBar">
-        <button class="filter-pill active" data-cat="All">All</button>
-        <button class="filter-pill" data-cat="Skincare">Skincare</button>
-        <button class="filter-pill" data-cat="Lip & Cheek">Lip & Cheek</button>
-        <button class="filter-pill" data-cat="Hair Rituals">Hair Rituals</button>
+        <button type="button" class="filter-pill active" data-cat="All">All</button>
+        <button type="button" class="filter-pill" data-cat="Skincare">Skincare</button>
+        <button type="button" class="filter-pill" data-cat="Lip & Cheek">Lip & Cheek</button>
+        <button type="button" class="filter-pill" data-cat="Hair Rituals">Hair Rituals</button>
       </div>
     </div>
     <div class="grid" id="productGrid"></div>
@@ -548,7 +548,7 @@
       <div>
         <div class="drawer-head">
           <h3>Your Beauty Bag</h3>
-          <button class="close-btn" onclick="toggleCart(false)">×</button>
+          <button type="button" class="close-btn" onclick="toggleCart(false)">×</button>
         </div>
         <div class="cart-items" id="cartItems"></div>
       </div>
@@ -557,7 +557,7 @@
           <span>Subtotal</span>
           <span id="cartTotal">₹0</span>
         </div>
-        <button class="btn-primary" style="width:100%" onclick="checkout()">Proceed to Checkout</button>
+        <button type="button" class="btn-primary" style="width:100%" onclick="checkout()">Proceed to Checkout</button>
       </div>
     </aside>
   </div>
@@ -590,7 +590,7 @@
             <p class="card-desc">${p.desc}</p>
             <div class="card-foot">
               <span class="price">₹${p.price.toLocaleString("en-IN")}</span>
-              <button class="add-btn" onclick="addToCart(${p.id})">+ Add to Bag</button>
+              <button type="button" class="add-btn" onclick="addToCart(${p.id})">+ Add to Bag</button>
             </div>
           </div>
         </article>
@@ -626,9 +626,9 @@
             <div style="font-size:0.82rem;color:var(--muted)">₹${item.price.toLocaleString("en-IN")}</div>
           </div>
           <div class="qty-controls">
-            <button onclick="changeQty(${item.id}, -1)">-</button>
+            <button type="button" onclick="changeQty(${item.id}, -1)">-</button>
             <span>${item.qty}</span>
-            <button onclick="changeQty(${item.id}, 1)">+</button>
+            <button type="button" onclick="changeQty(${item.id}, 1)">+</button>
           </div>
         </div>
       `).join("") : `<p style="color:var(--muted);text-align:center;margin-top:2rem;">Your beauty bag is empty.</p>`;
@@ -639,7 +639,10 @@
     }
 
     function checkout() {
-      if (!cart.length) return alert("Add a product to your bag first!");
+      if (!cart.length) {
+        alert("Add a product to your bag first!");
+        return;
+      }
       alert("Thank you for shopping with StyleWithShama! Your order summary has been created.");
       cart = [];
       updateCartUI();
